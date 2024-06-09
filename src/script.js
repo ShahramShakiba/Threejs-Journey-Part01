@@ -96,8 +96,8 @@ scene.add(pointLight);
 
 
 //==================== Resize Listener ===================
-const width = window.innerWidth;
-const height = window.innerHeight;
+let width = window.innerWidth;
+let height = window.innerHeight;
 
 window.addEventListener('resize', () => {
   // Update sizes
