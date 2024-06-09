@@ -62,34 +62,96 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace;
 // material.gradientMap = gradientTexture;
 // gradientTexture.generateMipmaps = false;
 
-const material = new THREE.MeshStandardMaterial();
-material.metalness = 1;
-material.roughness = 1;
-material.map = doorColorTexture;
+/***** ((((((((((MeshStandardMaterial)))))))))) *****/
+// const material = new THREE.MeshStandardMaterial();
+// material.metalness = 1;
+// material.roughness = 1;
+// material.map = doorColorTexture;
 
-// AmbientOcclusion Map | add shadows where the texture is dark
-material.aoMap = doorAmbientOcclusionTexture;
-material.aoMapIntensity = 1;
+// material.aoMap = doorAmbientOcclusionTexture;
+// material.aoMapIntensity = 1;
 
-// Displacement Map
-material.displacementMap = doorHeightTexture;
-material.displacementScale = 0.1;
+// material.displacementMap = doorHeightTexture;
+// material.displacementScale = 0.1;
 
-// Metalness Map & Roughness Map
-material.metalnessMap = doorMetalnessTexture;
-material.roughnessMap = doorRoughnessTexture;
+// material.metalnessMap = doorMetalnessTexture;
+// material.roughnessMap = doorRoughnessTexture;
 
-// Normal Map | fake the normal orientation + add details
-material.normalMap = doorNormalTexture;
-material.normalScale.set(0.5, 0.5);
+// material.normalMap = doorNormalTexture;
+// material.normalScale.set(0.5, 0.5);
 
-// Alpha Map
-material.transparent = true;
-material.alphaMap = doorAlphaTexture;
+// material.transparent = true;
+// material.alphaMap = doorAlphaTexture;
+
+// gui.add(material, 'roughness').min(0).max(1).step(0.0001);
+// gui.add(material, 'metalness').min(0).max(1.2).step(0.0001);
+
+/***** (((((MeshPhysicalMaterial))))) *****/
+const material = new THREE.MeshPhysicalMaterial();
+material.metalness = 0;
+material.roughness = 0;
 
 gui.add(material, 'roughness').min(0).max(1).step(0.0001);
 gui.add(material, 'metalness').min(0).max(1.2).step(0.0001);
 
+// material.map = doorColorTexture;
+
+/*** AmbientOcclusion Map | add shadows where the texture is dark ***/
+// material.aoMap = doorAmbientOcclusionTexture;
+// material.aoMapIntensity = 1;
+
+/*** Displacement Map ***/
+// material.displacementMap = doorHeightTexture;
+// material.displacementScale = 0.1;
+
+/*** Metalness Map & Roughness Map ***/
+// material.metalnessMap = doorMetalnessTexture;
+// material.roughnessMap = doorRoughnessTexture;
+
+/*** Normal Map | fake the normal orientation + add details ***/
+// material.normalMap = doorNormalTexture;
+// material.normalScale.set(0.5, 0.5);
+
+/*** Alpha Map ***/
+// material.transparent = true;
+// material.alphaMap = doorAlphaTexture;
+
+/*** Clearcoat ***/
+// material.clearcoat = 1;
+// material.clearcoatRoughness = 0;
+
+// gui.add(material, 'clearcoat').min(0).max(1).step(0.0001);
+// gui.add(material, 'clearcoatRoughness').min(0).max(1).step(0.0001);
+
+/*** Sheen | usually on fluffy material like fabric ***/
+// material.sheen = 1;
+// material.sheenRoughness = 0.25;
+// material.sheenColor.set(1, 1, 1);
+
+// gui.add(material, 'sheen').min(0).max(1).step(0.0001);
+// gui.add(material, 'sheenRoughness').min(0).max(1).step(0.0001);
+// gui.addColor(material, 'sheenColor');
+
+/*** Iridescence | creates color artifacts like a fuel puddle, soap bubbles ***/
+// material.iridescence = 1;
+// material.iridescenceIOR = 1;
+// material.iridescenceThicknessRange = [100, 800];
+
+// gui.add(material, 'iridescence').min(0).max(1).step(0.0001);
+// gui.add(material, 'iridescenceIOR').min(1).max(2.333).step(0.0001);
+// gui.add(material.iridescenceThicknessRange, '0').min(1).max(1000).step(1);
+// gui.add(material.iridescenceThicknessRange, '1').min(1).max(1000).step(1);
+
+/*** Transmission ***/
+material.transmission = 1;
+material.ior = 1.5; // index of reflection
+material.thickness = 0.5;
+
+gui.add(material, 'transmission').min(0).max(1).step(0.0001);
+gui.add(material, 'ior').min(1).max(10).step(0.0001);
+gui.add(material, 'thickness').min(0).max(1).step(0.0001);
+
+//==================== Geometry
 const plane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, 100, 100), material);
 
 const torus = new THREE.Mesh(
@@ -155,6 +217,7 @@ scene.add(camera);
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
 
+//===================== Renderer =========================
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
 });
@@ -162,7 +225,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(width, height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-//======================================================
+//==================== Animate ===========================
 const clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
