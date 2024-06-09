@@ -83,17 +83,27 @@ sphere.position.x = -1.5;
 scene.add(plane, sphere, torus);
 
 //====================== Lights ==========================
-const ambientLight = new THREE.AmbientLight(0xffffff, 1);
-scene.add(ambientLight);
+/* since the environment-map is contributing to the lighting
+we can comment lights, otherwise it'll be too bright */
 
-const pointLight = new THREE.PointLight(0xffffff, 30);
-pointLight.position.x = 2;
-pointLight.position.y = 3;
-pointLight.position.z = 4;
-scene.add(pointLight);
+// const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+// scene.add(ambientLight);
 
-//====================== Lights ==========================
+// const pointLight = new THREE.PointLight(0xffffff, 30);
+// pointLight.position.x = 2;
+// pointLight.position.y = 3;
+// pointLight.position.z = 4;
+// scene.add(pointLight);
 
+//================= Environment Map ======================
+const rgbeLoader = new RGBELoader();
+rgbeLoader.load('./textures/environmentMap/2k.hdr', (environmentMap) => {
+  environmentMap.mapping = THREE.EquirectangularReflectionMapping;
+
+  scene.background = environmentMap;
+  //to contributing the light of the objects with env
+  scene.environment = environmentMap;
+});
 
 //==================== Resize Listener ===================
 let width = window.innerWidth;
