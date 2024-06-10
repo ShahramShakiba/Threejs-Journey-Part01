@@ -23,7 +23,7 @@ With an array of Materials at my disposal, I will paint a masterpiece on each Me
 <br/>
 
 > [!IMPORTANT]
->> - It is crucial to grasp that the project incorporates _"Three.js"_, and _"Vanilla JavaScript"_ to build a visually impressive 3D portfolio.
+>> - It is crucial to grasp that the project incorporates _"Three.js"_, and _"Vanilla JavaScript"_ to build a visually impressive 3D Environment.
 
 
 <br/><br/>
