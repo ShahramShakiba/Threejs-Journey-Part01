@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Laptop.webp" alt="Laptop" width="35" /> &nbsp; _Materials_ &nbsp; <img src="https://skillicons.dev/icons?i=threejs" height="35" alt="threejs logo"  />  <img src="https://skillicons.dev/icons?i=js" height="35" alt="javascript logo"  />
+# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Laptop.webp" alt="Laptop" width="35" /> &nbsp; _Materials_ &nbsp; <img src="https://skillicons.dev/icons?i=threejs" height="35" alt="threejs logo"  />
 
 <!----------------------------------------- Description ---------------------------------------->
 ### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Bubbles.png" alt="Bubbles" width="40" height="40" />&nbsp; _Description_
@@ -23,7 +23,7 @@ With an array of Materials at my disposal, I will paint a masterpiece on each Me
 <br/>
 
 > [!IMPORTANT]
->> - It is crucial to grasp that the project incorporates _"Three.js"_, and _"Vanilla JavaScript"_ to build a visually impressive 3D Environment.
+>> - It is crucial to grasp that the project incorporates _"Three.js"_ to build a visually impressive 3D Environment.
 
 
 <br/><br/>
