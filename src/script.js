@@ -1,13 +1,22 @@
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import * as THREE from 'three';
 import GUI from 'lil-gui';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const canvas = document.querySelector('canvas.webgl'); // Canvas
 const scene = new THREE.Scene(); //Scene
 const gui = new GUI(); // Debug
 
 //==================== Textures =======================
+// Get the image with Native-JavaScript
+/* const image = new Image();
+const texture = new THREE.Texture(image);
+texture.colorSpace = THREE.SRGBColorSpace;
+image.onload = () => {
+  texture.needsUpdate = true;
+};
+image.src = '/textures/door/color.png'; */
+
 const textureLoader = new THREE.TextureLoader();
 
 const doorColorTexture = textureLoader.load('/textures/door/color.jpg');
@@ -29,6 +38,20 @@ const gradientTexture = textureLoader.load('./textures/gradients/5.jpg');
 
 doorColorTexture.colorSpace = THREE.SRGBColorSpace;
 matcapTexture.colorSpace = THREE.SRGBColorSpace;
+
+// We can send 3 functions after the path for debugging
+/* const doorColorTexture = textureLoader.load(
+  '/textures/door/color.jpg',
+  () => {
+    console.log('Load');
+  },
+  () => {
+    console.log('Progress');
+  },
+  () => {
+    console.log('Error');
+  }
+); */
 
 //==================== Objects ========================
 // const material = new THREE.MeshBasicMaterial();
